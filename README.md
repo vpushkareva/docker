@@ -116,11 +116,11 @@ container #--# host : "port\nmapping"
 Hands-on practice quest #00: prerequisites sound-check <sup>30 + 5</sup>
 =======================
 - [ ] Given
-- сделан форк данного руководства для собственных пометок
-- форк открыт в браузере для внесения пометок
-- для последующей удобной работы с copy+paste для ресурсов раздела [Prerequisites](#Prerequisites) плейсхолдеры заменены актуальными значениями
+- сделан форк данного руководства для собственных пометок +
+- форк открыт в браузере для внесения пометок +
+- для последующей удобной работы с copy+paste для ресурсов раздела [Prerequisites](#Prerequisites) плейсхолдеры заменены актуальными значениями 
 
-- [ ] Сформированы пары участников с чередованием ролей в паре
+- [ ] Сформированы пары участников с чередованием ролей в паре +
 - Hint: синонимы команд docker cli
 - Hint: `... --help`
 - Hint: [docker cli reference](https://docs.docker.com/engine/reference/commandline/docker/)
@@ -135,41 +135,42 @@ Hands-on practice quest #00: prerequisites sound-check <sup>30 + 5</sup>
 ``` 
 
 - [ ] When участники *именуют сценарии*, выполняют команды и анализируют их вывод и поведение
-- Сценарий "Как ...?"
+- [ ] 
+- Сценарий "Как посмотреть основную докер информацию"
 ```shell
-docker version # TODO: собственные пометки участников для будущего использования в проектах
-docker system info
-docker system df
+docker version # версия установленного докера (клиент и ядро)
+docker system info #текущее состояние системы
+docker system df #disc fragmentation (кол-во, статус, размер)
 
-docker events
+docker events #realtime показывает события связанные с работой докера (имеджи, контейнеры) - для отладки хорошо
 ```
 
-- Сценарий "Как ...?"
+- Сценарий "Как залогиниться с помощью токена через терминал"
 (в новом ssh shell, чтобы параллельно видеть вывод `docker events`)
 ```shell
-docker logout
+docker logout #выход из регистри
 open https://hub.docker.com/settings/security # to make Access Token
-docker login -u {{ registry-account }} -p {{ access-token }} # login default hub.docker.com registry
+docker login -u valeriyapushkareva -p 80e929b6-345b-4121-9b07-96c7badfff98 # login default hub.docker.com registry using new tocken
 ```
 
-- Сценарий "Как ...?"
+- Сценарий "Как скачать новый образ (альпин)?"
 ```shell
-docker image pull alpine
+docker image pull alpine #устанавливает альпин
 docker system df
 ````
 
-- Сценарий "Как ...?"
+- Сценарий "Как запустить контейнер (с альпином)?"
 ```shell
-docker container ls [--all]
-docker container run --name demo -it alpine
-/# cat /etc/os-release
-/# exit 
+docker container ls [--all] #all containers
+docker container run --name demo -it alpine #start container and give name (demo)
+/# cat /etc/os-release #данные по сборке имеджа альпина
+/# exit #завершить работу с контейнером
 ```
 
-- Сценарий "Как ...?"
+- Сценарий "Как удалить контейнер (по имени)?"
 ```shell
 docker container ls [--all]
-docker container rm [--force] demo
+docker container rm [--force] demo #destroy container
 ```
 
 - [ ] Then участники делятся проблемами и отвечают на вопросы
