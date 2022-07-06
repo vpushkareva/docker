@@ -280,68 +280,68 @@ Hands-on practice quest #01: pre-built disk image lifecycle <sup>30 + 5</sup>
 - [ ] Given пары участников
 
 - [ ] When участники именуют сценарии, выполняют команды и анализируют их вывод и поведение
-- Сценарий "Как ...?"
+- Сценарий "Как посмотреть имеджи которые есть в докере?"
 ```shell
 docker image ls # TODO: собственные пометки участников для будущего использования в проектах
 ```
 
-- Сценарий "Как ...?"
+- Сценарий "Как скачать или обновить альпин и посмотреть что он скачан?"
 ```shell
-docker image pull alpine
+docker image pull alpine #обновит если альпин уже есть
 docker image ls
 ```
 
-- Сценарий "Как ...?"
+- Сценарий "Как посмотреть всю информацию по слоям имеджа?"
 ```shell
-docker image history alpine
+docker image history alpine #хистори по слоям
 
-docker image inspect alpine
-docker image inspect --format='{{.Id}} -> {{.Parent}}' alpine
+docker image inspect alpine #вся детальная информация по имеджу
+docker image inspect --format='{{.Id}} -> {{.Parent}}' alpine #информация по имеджу в заданном формате
 ```
 
-- Сценарий "Как ...?"
+- Сценарий "Как создать новый имедж с изменениями и сохранить изменения локально?"
 ```shell
-docker container run --name demo -it alpine
-/# touch side-effect.txt
+docker container run --name demo -it alpine #запустили контейнер с именем демо в интерактивном режиме
+/# touch side-effect.txt #сделали файлик
 /# exit
-docker container diff demo
-docker container commit demo {{ registry-account }}/demo
+docker container diff demo #показывает измененные и добавленные файлы
+docker container commit demo valeriyapushkareva/demo #commit сделает новый имедж на основе старого
 docker image ls
 ```
 
-- Сценарий "Как ...?"
+- Сценарий "Как проверсионировать имедж?"
 ```shell
-docker image tag {{ registry-account }}/demo:latest {{ registry-account }}/demo:1.0.0
+docker image tag valeriyapushkareva/demo:latest valeriyapushkareva/demo:1.0.0
 docker image ls
 ```
 
-- Сценарий "Как ...?"
+- Сценарий "Как запушить имедж в удаленный репозиторий?"
 ```shell
-docker image push {{ registry-account }}/demo:1.0.0
+docker image push valeriyapushkareva/demo:1.0.0 #указывает в какой репо пушим и пушит
 ```
 
-- Сценарий "Как ...?"
+- Сценарий "Как удалить версии имеджа и удалить имеджи и зависшие коммиты?"
 ```shell
 docker image ls
 docker container rm demo
-docker image prune
+docker image prune #удалит все подвисшие коммиты?
 docker image ls
-docker image rm {{ registry-account }}/demo:1.0.0
+docker image rm valeriyapushkareva/demo:1.0.0 #убирает теги
 docker image ls
-docker image rm {{ registry-account }}/demo:latest
+docker image rm valeriyapushkareva/demo:latest
 docker image ls
 docker image prune --all
 ```
 
 - [ ] Then участники делятся проблемами и отвечают на вопросы
 - Как назвали сценарии?
-- Какие способы идентификации образа?
-- Какой тег у образа по умолчанию при создании коммитом?
+- Какие способы идентификации образа? - ID, теги, имя
+- Какой тег у образа по умолчанию при создании коммитом? лейтест
 - Какой тег у образа по умолчанию при операции `pull`?
 - В чем физический смысл удаления образа командой `rm`?
 - Всегда ли удаляется образ по команде `rm`?
-- Что делает prune?
-- Что такое [_dangling_](https://docs.docker.com/config/pruning/#prune-images) image?
+- Что делает prune? - удаляет неиспользуемые
+- Что такое [_dangling_](https://docs.docker.com/config/pruning/#prune-images) image? - коммиты без тегов
 
 
 Жизненный цикл контейнера <sup>45</sup>
