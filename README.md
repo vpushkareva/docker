@@ -309,7 +309,7 @@ docker container commit demo valeriyapushkareva/demo #commit сделает но
 docker image ls
 ```
 
-- Сценарий "Как проверсионировать имедж?"
+- Сценарий "Как проверсионировать имедж? как дать новое символьное имя?"
 ```shell
 docker image tag valeriyapushkareva/demo:latest valeriyapushkareva/demo:1.0.0
 docker image ls
@@ -324,13 +324,13 @@ docker image push valeriyapushkareva/demo:1.0.0 #указывает в како�
 ```shell
 docker image ls
 docker container rm demo
-docker image prune #удалит все подвисшие коммиты?
+docker image prune #удалит все подвисшие образы? те для которых нет работающего контейнера
 docker image ls
 docker image rm valeriyapushkareva/demo:1.0.0 #убирает теги
 docker image ls
 docker image rm valeriyapushkareva/demo:latest
 docker image ls
-docker image prune --all
+docker image prune --all #удаляет те у кого нет никакого символьного имени (тега)
 ```
 
 - [ ] Then участники делятся проблемами и отвечают на вопросы
