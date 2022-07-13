@@ -410,7 +410,7 @@ curl localhost:80
 
 - Сценарий "Как 'подключиться' к работающему контейнеру?"
 ```shell
-docker container logs
+docker container logs <container id>
 docker container attach --sig-proxy=false # otherwise detach key `ctrl-c` will stop container 
 docker container top
 docker container exec -it /bin/sh
@@ -422,7 +422,7 @@ docker container port
 docker container inspect [| jq]
 ```
 
-- Сценарий "Как поставить на паузу контейнер?"
+- Сценарий "Как поставить на паузу контейнер?" - optional
 ```shell
 docker container pause
 docker container unpause
@@ -463,7 +463,7 @@ docker container diff
 docker container commit
 ```
 
-- Опциональный сценарий "Как обменяться файлами с контейнером?"
+- Опциональный сценарий "Как обменяться файлами с контейнером?" - optional
 ```shell
 docker container cp
 ```
